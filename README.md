@@ -1,15 +1,5 @@
-### Date created
-Include the date you created this project and README file.
+# GitHub PDSND fork for the Bikeshare Python project
 
-### Project Title
-Replace the Project Title
+This project was created on 26 January 2021.
 
-### Description
-Describe what your project is about and what it does
-
-### Files used
-Include the files used
-
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+It contains a Python script `bikeshare.py` to analyze some statistics using the Pandas library.

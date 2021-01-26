@@ -15,7 +15,7 @@ def get_city():
     Returns:
         (str) Filename containing the correponding city data
     """
-    
+
     city = input('Would you like to see data for [C]hicago, [N]ew York, or [W]ashington? ').strip().casefold()
     while True:
         if city == 'c':
@@ -71,7 +71,7 @@ def get_time_period():
             break
         else:
             f = input('Please type \'m\' to filter by month, \'d\' to filter by day or \'n\' for no filter: ').strip().casefold()
-    
+
     return month, day
 
 
@@ -83,10 +83,10 @@ def load_data(city):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     print('Loading data from file ' + city + '...\n')
     df = pd.read_csv(city)
-    
+
     # Provide datetime format to allow easier filtering
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -150,7 +150,7 @@ def popular_day(df):
         popular_day - string with name of day with most rides
     """
 
-    print('\n * What is the most popular day of the week (Monday to Sunday) for bike traveling?')    
+    print('\n * What is the most popular day of the week (Monday to Sunday) for bike traveling?')
     return df['day_of_week'].value_counts().reset_index()['index'][0]
 
 
@@ -182,7 +182,7 @@ def trip_duration(df):
     df['End Time'] = pd.to_datetime(df['End Time'])
     df['Travel Time'] = df['End Time'] - df['Start Time']
     # Sum for total trip time, Mean for average trip time
- 
+
     total_travel_time = np.sum(df['Travel Time'])
     totalDays = str(total_travel_time).split()[0]
     print ("\nThe total travel time on 2017 through June was " + totalDays + " days \n")
@@ -198,9 +198,9 @@ def popular_stations(df):
     Args:
         df - DataFrame from apply_time_filters
     Returns:
-        tuple - indicating most popular start and end stations            
+        tuple - indicating most popular start and end stations
     """
-    
+
     print("\n* What is the most popular start station?")
     start_station = df['Start Station'].value_counts().reset_index()['index'][0]
     print (start_station)
@@ -233,7 +233,7 @@ def users(df):
         users - pandas series with counts for each user type
     """
 
-    print('\n* Are users subscribers, customers, or dependents?\n')    
+    print('\n* Are users subscribers, customers, or dependents?\n')
     return df['User Type'].value_counts()
 
 
@@ -287,7 +287,7 @@ def compute_stat(f, df):
     start_time = time.time()
     statToCompute = f(df)
     print(statToCompute)
-    print("Computing this stat took %s seconds." % (time.time() - start_time))
+    print(" >>> Computing this stat took %s seconds." % (time.time() - start_time))
 
 
 def display_raw_data(df):
@@ -301,14 +301,14 @@ def display_raw_data(df):
 
     rowIndex = 0
     more = input("Would you like to see rows of the data used to compute the stats? Type 'y' or 'n' ").strip().casefold()
-    
+
     while True:
         if more == 'n':
             return
         if more == 'y':
             print(df[rowIndex: rowIndex + rows_to_see])
             rowIndex = rowIndex + rows_to_see
-        
+
         more = input("\nWould you like to see " + str(rows_to_see) + " more rows of the data? Type 'y' or 'n' ").strip().casefold()
 
 def stats():
@@ -328,15 +328,15 @@ def stats():
     df = apply_time_filters(df, month, day)
 
     display_raw_data(df)
-    
+
     stat_function_list = [popular_month,
-        popular_day, popular_hour, 
-        trip_duration, popular_trip, 
+        popular_day, popular_hour,
+        trip_duration, popular_trip,
         popular_stations, users, birth_years, gender]
-    
+
     for fun in stat_function_list:
         compute_stat(fun, df)
-    
+
     restart = input("\n * Would you like to restart and perform another analysis? Type \'y\' or \'n\' ").strip().casefold()
     if restart == "y":
         stats()

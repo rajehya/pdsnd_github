@@ -5,7 +5,7 @@ import numpy as np
 chicago = 'chicago.csv'
 new_york_city = 'new_york_city.csv'
 washington = 'washington.csv'
-rows_to_see = 5
+rows_to_see = 5 # Change this number if you want to see more data rows each time
 
 def get_city():
     """

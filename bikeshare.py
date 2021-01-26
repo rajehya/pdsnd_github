@@ -287,7 +287,7 @@ def compute_stat(f, df):
     start_time = time.time()
     statToCompute = f(df)
     print(statToCompute)
-    print("Computing this stat took %s seconds." % (time.time() - start_time))
+    print(" >>> Computing this stat took %s seconds." % (time.time() - start_time))
 
 
 def display_raw_data(df):

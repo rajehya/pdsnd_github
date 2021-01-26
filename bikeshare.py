@@ -9,11 +9,11 @@ rows_to_see = 5
 
 def get_city():
     """
-    Asks user to specify a city.
+    Asks user to specify a city
     Args:
-        None.
+        None
     Returns:
-        (str) Filename containing the correponding city data.
+        (str) Filename containing the correponding city data
     """
     
     city = input('Would you like to see data for [C]hicago, [N]ew York, or [W]ashington? ').strip().casefold()
@@ -35,9 +35,9 @@ def get_city():
 
 def get_time_period():
     """
-    Asks user to specify a time period to filter.
+    Asks user to specify a time period to filter
     Args:
-        none.
+        None
     Returns:
         month - string containing the month to filter by, or "all" to apply no month filter
         day   - string containing the day of week to filter by, or "all" to apply no day filter
@@ -97,7 +97,7 @@ def load_data(city):
 
 def apply_time_filters(df, month, day_of_week):
     """
-    Filters the data according to the criteria specified by the user.
+    Filters the data according to the criteria specified by the user
     Args:
         df          - Pandas DataFrame
         month       - string indicating the month to filter by, or "all" to apply no month filter
@@ -281,7 +281,7 @@ def compute_stat(f, df):
         f  - Applied stats function
         df - DataFrame with all the data
     Returns:
-        None. Only prints information to console
+        None, only prints information to console
     """
 
     start_time = time.time()
@@ -296,7 +296,7 @@ def display_raw_data(df):
     Args:
         df - DataFrame with all the data
     Returns:
-       None.
+       None
     """
 
     rowIndex = 0
@@ -314,11 +314,11 @@ def display_raw_data(df):
 def stats():
     """
     Calculates and prints out the descriptive statistics about a city
-    and time period specified by the user via raw input.
+    and time period specified by the user via raw input
     Args:
-        None.
+        None
     Returns:
-        None.
+        None
     """
 
     city = get_city()
